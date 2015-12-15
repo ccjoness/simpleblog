@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for post in posts %}
+        <div class="blog-post">
+            <h3><a href="{{ post.category.slug }}/{{ post.slug }}"> {{ post.title }}</a>
+                <small>{{ post.date }}</small>
+            </h3>
+            {% if post.image %}
+                <img src="/media/{{ post.image }}"><br>
+            {% endif %}
+
+            <p>{{ post.text }}</p>
+
+            <div class="callout">
+                <ul class="menu simple">
+                    <li><a href="#">Author: {{ post.author }}</a></li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

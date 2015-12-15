@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="blog-post">
+        <h3>{{ post.title }}
+            <small>{{ post.date }}</small>
+        </h3>
+        {% if post.image %}
+            <img src="/media/{{ post.image }}"><br>
+        {% endif %}
+
+        <p>{{ post.text }}</p>
+
+        <div class="callout">
+            <ul class="menu simple">
+
+                {% if user.is_authenticated %}
+                    <li>Author: {{ post.author }}&nbsp;&nbsp;&nbsp; </li>
+                    <li><a href="/blog/{{ post.category.slug }}/{{ post.slug }}/edit/">Edit</a></li>
+                    <li><a href="/blog/{{ post.category.slug }}/{{ post.slug }}/delete/">Delete</a></li>
+                {% else %}
+                    <li>Author: {{ post.author }}</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
