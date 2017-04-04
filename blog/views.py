@@ -48,3 +48,6 @@ class DeletePost(DeleteView):
     model = Post
     success_url = '/blog/'
     template_name = 'confirm_delete.html'
+
+def greet(x):
+    print('Hello {}'.format(x))
